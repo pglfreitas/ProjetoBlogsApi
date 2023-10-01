@@ -15,6 +15,12 @@ const userController = async (req, res) => {
   return res.status(201).json({ token });
 };
 
+const userGetAllController = async (req, res) => {
+  const response = await userCreateService.userGetAllService();
+  return res.status(200).json(response.data);
+};
+
 module.exports = {
   userController,
+  userGetAllController,
 };
