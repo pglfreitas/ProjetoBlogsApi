@@ -20,7 +20,26 @@ const userService = async (displayName, email, password, image) => {
 
 const userGetAllService = async () => {
   const response = await User.findAll({ attributes: { exclude: ['password'] } });
-  
+
+  return {
+    status: 'SUCCESSFUL',
+    data: response,
+  };
+};
+
+const userGetByIdService = async (id) => {
+  const response = await User.findOne({ 
+    where: { id }, 
+    attributes: { exclude: ['password'] },
+  });
+
+  if (!response) {
+    return {
+      status: 'NOT_FOUND',
+      data: { message: 'User does not exist' },
+    };
+  }
+
   return {
     status: 'SUCCESSFUL',
     data: response,
@@ -30,4 +49,5 @@ const userGetAllService = async () => {
 module.exports = {
   userService,
   userGetAllService,
+  userGetByIdService,
 };
