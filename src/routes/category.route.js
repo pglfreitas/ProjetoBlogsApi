@@ -8,5 +8,6 @@ route.post(
   authorization.tokenValidation,
   categoryController.categoryCreateController,
 );
+route.get('/', authorization.tokenValidation, categoryController.categoryGetAllController);
 
 module.exports = route;

@@ -16,6 +16,16 @@ const categoryCreateService = async (name) => {
   };
 };
 
+const categoryGetAllService = async () => {
+  const response = await Category.findAll();
+  
+  return {
+    status: 'SUCCESSFUL',
+    data: response,
+  };
+};
+
 module.exports = {
   categoryCreateService,
+  categoryGetAllService,
 };
